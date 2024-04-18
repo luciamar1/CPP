@@ -3,11 +3,11 @@ NAME       := MyAwesomePhoneBook
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp PhoneBook.cpp Contact.cpp Reader.cpp App.cpp Util.cpp
+SRC_NAME   := contact.cpp  main.cpp   phonebook.cpp  utils.cpp
 
 # Librerias
 HEAD_DIR   := .
-HEAD_NAME  := PhoneBook.hpp Contact.hpp Reader.hpp App.hpp Util.hpp
+HEAD_NAME  := phonebook.hpp contact.hpp app.h utils.hpp
 
 # Directorio de los archivos objeto
 OBJ_DIR    := .
@@ -46,3 +46,4 @@ fclean: clean
 
 # Regla para reconstruir el programa
 re: fclean all
+
