@@ -23,3 +23,17 @@ void contact::displayInfo() const {
         std::cout << "Darkest Secret: " << darkest_secret << std::endl;
     }
 
+std::string contact::displayData(const std::string& data) const {
+  if(data ==  "first name")
+    return(first_name);
+  if(data ==  "last name")
+    return(last_name);
+  if(data ==  "nickname")
+    return(nickname);
+  if(data ==  "phone number")
+    return(phone_number);
+  if(data ==  "darkest secret")
+    return(darkest_secret);
+  return("");
+}
+

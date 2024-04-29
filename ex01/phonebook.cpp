@@ -31,9 +31,9 @@ void phonebook::search_contact()
     for(int counter = 0; counter <= last_index; counter ++)
     {
         std::cout << std::setw(10) << std::right << counter << " | ";
-        std::cout << std::setw(10) << std::right << truncate_string(list_contacts[counter].first_name) << " | ";
-        std::cout << std::setw(10) << std::right <<  truncate_string(list_contacts[counter].last_name) << " | ";
-        std::cout << std::setw(10) << std::right << truncate_string(list_contacts[counter].nickname) << std::endl;
+        std::cout << std::setw(10) << std::right << truncate_string(list_contacts[counter].displayData("first name")) << " | ";
+        std::cout << std::setw(10) << std::right <<  truncate_string(list_contacts[counter].displayData("last name")) << " | ";
+        std::cout << std::setw(10) << std::right << truncate_string(list_contacts[counter].displayData("nickname")) << std::endl;
     }
     std::cout << "Enter the index of the contact to display: ";
     std::cin >> index;
