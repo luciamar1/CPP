@@ -4,7 +4,6 @@
 #include <string>
 
 class contact {
-//friend class phonebook;
 private:
     std::string first_name;
     std::string last_name;

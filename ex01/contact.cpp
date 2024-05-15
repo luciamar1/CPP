@@ -36,4 +36,3 @@ std::string contact::displayData(const std::string& data) const {
     return(darkest_secret);
   return("");
 }
-

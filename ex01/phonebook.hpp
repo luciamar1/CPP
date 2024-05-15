@@ -13,7 +13,7 @@ private:
 public:
     phonebook();
 
-    void add_contact(const contact& contact);
+    void add_contact(const contact& contact, int  *older);
 
     void search_contact();
     

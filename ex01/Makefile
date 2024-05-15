@@ -20,11 +20,11 @@ HEAD       := $(addprefix $(HEAD_DIR)/,$(HEAD_NAME))
 
 # Compilador y opciones de compilación
 CC         := c++
-CFLAGS     := -c -Wall -Wextra -Werror -std=c++98 -pedantic -I$(HEAD_DIR)
+CFLAGS     :=  -Wall -Wextra -Werror -std=c++98 -pedantic -I$(HEAD_DIR) -I$(SRC_DIR)
 
 # Regla implícita para compilar archivos fuente en archivos objeto
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEAD)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Objetivos PHONY: clean, fclean, re y all
 .PHONY: clean fclean re all
@@ -34,7 +34,7 @@ all: $(NAME)
 
 # Regla para compilar el programa final
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 # Regla para limpiar los archivos objeto
 clean:
