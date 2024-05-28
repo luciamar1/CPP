@@ -1,5 +1,5 @@
 # Nombre del programa
-NAME       := ex02
+NAME       := ex04
 
 # Archivos fuente
 SRC_DIR    := .

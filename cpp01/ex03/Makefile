@@ -1,12 +1,12 @@
 # Nombre del programa
-NAME       := Horde
+NAME       := human
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp  zombieHorde.cpp Zombie.cpp
+SRC_NAME   := main.cpp  HumanA.cpp  HumanB.cpp  Weapon.cpp
 # Librerias
 HEAD_DIR   := .
-HEAD_NAME  :=  Zombie.hpp 
+HEAD_NAME  :=  HumanA.hpp  HumanB.hpp  Weapon.hpp
 
 # Directorio de los archivos objeto
 OBJ_DIR    := .
