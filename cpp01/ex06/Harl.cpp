@@ -13,7 +13,6 @@ void Harl::info()
     std::cout << std::endl;
 }
 
-
 void Harl::warning() 
 {
     std::cout << "I think I deserve to have some extra bacon for free.\nI’ve been coming for years whereas you started working here since last month." << std::endl;
@@ -25,7 +24,25 @@ void Harl::error()
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
     std::cout << std::endl;
 }
+/*
+void    Harl::complain(std::string level)
+{
+    void (Harl::*harlFunctions[4])() = { &Harl::debug, &Harl::info, &Harl::warning,  &Harl::error };
+    std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR" };
+    for(int counter = 0; counter < 4; counter++)
+    {
+        if(level == levels[counter])
+        {
+            while(counter < 4)
+            {
+                std::cout << "[ " << levels[counter] << " ]" << std::endl;
+                (this->*harlFunctions[counter])();
+                counter ++;
+            }
 
+        }
+    }    
+}*/
 int putLevel(std::string level)
 {
     int levelValue;
@@ -43,32 +60,26 @@ int putLevel(std::string level)
     return(levelValue);
 }
 
-void    Harl::complain(std::string level)
-{
-    int levelValue = putLevel(level);
-    switch (levelValue)
-    {
+void Harl::complain(std::string level) {
+    int levelValue;
+
+    levelValue = putLevel(level);
+    switch (levelValue) {
         case 1:
-        {
+            std::cout << "[ DEBUG ]" << std::endl;
             debug();
-            break;
-        }
         case 2:
-        {
+            std::cout << "[ INFO ]" << std::endl;
             info();
-            break;
-        }
         case 3:
-        {
+            std::cout << "[ WARNING ]" << std::endl;
             warning();
-            break;
-        }
         case 4:
-        {
+            std::cout << "[ ERROR ]" << std::endl;
             error();
             break;
-        }
         default:
+            std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
             break;
     }
 }
