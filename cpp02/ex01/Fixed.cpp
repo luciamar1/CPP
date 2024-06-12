@@ -14,7 +14,7 @@ Fixed::Fixed(const Fixed&  originalFixed)
 
 Fixed::Fixed(const int&  fPoint)
 {
-    fixedPoint =  fixedPoint<<this->fractionalBits;
+    fixedPoint =  fPoint << this->fractionalBits;
 }
 
 Fixed::Fixed(const float&  fPoint)
@@ -39,11 +39,11 @@ Fixed& Fixed::operator=(const Fixed& original_Fixed)
     return(*this);
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
-{
-    os << fixed.toFloat();
-    return os;
-}
+// std::ostream& Fixed::operator<<(std::ostream& os, const Fixed& fixed)
+// {
+//     os << fixed.toFloat();
+//     return os;
+// }
 
 void Fixed::setRawBits( int const raw )
 {
