@@ -14,11 +14,13 @@ Fixed::Fixed(const Fixed&  originalFixed)
 
 Fixed::Fixed(const int&  fPoint)
 {
+    std::cout << "Int constructor called" << std::endl;
     fixedPoint =  fPoint << this->fractionalBits;
 }
 
 Fixed::Fixed(const float&  fPoint)
 {
+    std::cout << "Float constructor called" << std::endl;
     float big_value = fPoint * std::pow(2, this->fractionalBits);
     big_value += 0.5f;
     fixedPoint = static_cast<int>(big_value);
@@ -34,11 +36,21 @@ Fixed& Fixed::operator=(const Fixed& original_Fixed)
     std::cout << "Copy assignment operator called" << std::endl;
     if(this != &original_Fixed)
     {
-        this->fixedPoint = getRawBits();
+        this->fixedPoint = original_Fixed.getRawBits();
     }
     return(*this);
 }
-
+float Fixed::toFloat( void ) const
+{
+    float ret = static_cast<float>(fixedPoint);
+    ret = ret / std::pow(2, this->fractionalBits);
+    return(ret);
+}
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
+{
+   os << fixed.toFloat();
+    return(os);
+}
 // std::ostream& Fixed::operator<<(std::ostream& os, const Fixed& fixed)
 // {
 //     os << fixed.toFloat();
@@ -56,12 +68,6 @@ int Fixed::getRawBits( void ) const
     return(fixedPoint);
 }
 
-float Fixed::toFloat( void ) const
-{
-    float ret = static_cast<float>(fixedPoint);
-    ret = ret / std::pow(2, this->fractionalBits);
-    return(ret);
-}
 
 int Fixed::toInt( void ) const
 {
