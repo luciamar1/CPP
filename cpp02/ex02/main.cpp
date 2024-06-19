@@ -15,5 +15,14 @@ int main( void )
     std::cout << "a <= b: " << (a <= b) << std::endl;
     std::cout << "a == b: " << (a == b) << std::endl;
     std::cout << "a != b: " << (a != b) << std::endl;
+
+    Fixed sum = a + b;
+    Fixed diff = a - b;
+    Fixed prod = a * b;
+    Fixed div = a / b;
+    std::cout << "a + b = " << sum << std::endl;
+    std::cout << "a - b = " << diff << std::endl;
+    std::cout << "a * b = " << prod << std::endl;
+    std::cout << "a / b = " << div << std::endl;
     return 0;
 }

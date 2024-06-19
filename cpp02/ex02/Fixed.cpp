@@ -109,3 +109,39 @@ bool Fixed::operator!=(const Fixed& other)
     
     return(this->fixedPoint != other.fixedPoint);
 }
+
+Fixed Fixed::operator+(const Fixed& other)
+{
+    Fixed newFixed;
+    newFixed.fixedPoint = this->fixedPoint + other.fixedPoint;
+    return(newFixed);
+}
+
+Fixed Fixed::operator-(const Fixed& other)
+{
+    Fixed newFixed;
+    newFixed.fixedPoint = this->fixedPoint - other.fixedPoint;
+    return(newFixed);
+}
+
+Fixed Fixed::operator*(const Fixed& other)
+{
+    Fixed newFixed;
+    newFixed.fixedPoint = this->fixedPoint * other.fixedPoint;
+    return(newFixed);
+}
+
+Fixed Fixed::operator/(const Fixed& other)
+{
+    Fixed newFixed;
+    newFixed.fixedPoint = this->fixedPoint / other.fixedPoint;
+    return(newFixed);
+}
+
+
+Fixed operator++(Fixed& other)
+{
+    other.setRawBits(other.fixedPoint + std::numeric_limits<double>::epsilon());
+    return(other.fixedPoint);
+
+}
