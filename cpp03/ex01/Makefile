@@ -1,5 +1,5 @@
 # Nombre del programa
-NAME       := ClapTrap
+NAME       := ScavTrap
 
 # Archivos fuente
 SRC_DIR    := .

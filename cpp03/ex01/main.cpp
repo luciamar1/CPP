@@ -3,8 +3,8 @@
 #include "ScavTrap.hpp"
 
 int main() {
-    ClapTrap clap("clap monada A");
-    ScavTrap scav("scav monada B");
+    ClapTrap clap("monada A");
+    ScavTrap scav("monada B");
 
     clap.attack("target");
     clap.takeDamage(5);

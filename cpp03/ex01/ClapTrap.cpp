@@ -28,7 +28,7 @@ void ClapTrap::attack(const std::string& target)
 {
     if(energyPoints > 0)
     {
-        std::cout << "ClapTrap lose 1 point of energy to " << name << " attack " << target << ", causing " << attackDamage << " points of damage! " << std::endl;
+        std::cout << "ClapTrap  " << name << " lose 1 point of energy to attack " << target << ", causing " << attackDamage << " points of damage! " << std::endl;
         energyPoints -= 1;
     }
     else
@@ -46,7 +46,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     if (energyPoints > 0)
     {
-        std::cout << "ClapTrap lose 1 point of energy to " << name << " earn " << amount << " points of damage!" << std::endl;
+        std::cout << "ClapTrap " << name << " lose 1 point of energy to  earn " << amount << " points of health!" << std::endl;
         health += amount;
         energyPoints -= 1;
     }
