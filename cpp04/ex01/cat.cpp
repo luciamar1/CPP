@@ -2,16 +2,19 @@
 
 Cat::Cat()
 {
+    brain = new Brain();
     type = "cat";
     std::cout << "default constructor cat called" << std::endl;
 }
 Cat::Cat(std::string animalType)
 {
+    brain = new Brain();
     type = animalType;
     std::cout << "constructor type cat called" << std::endl;
 }
 Cat::~Cat()
 {
+    brain->~Brain();
     std::cout << "default destructor cat called" << std::endl;
 }
 
