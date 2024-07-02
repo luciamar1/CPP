@@ -1,12 +1,12 @@
 # Nombre del programa
-NAME       := Animal
+NAME       := abstract
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp  animal.cpp cat.cpp dog.cpp wronganimal.cpp wrongcat.cpp
+SRC_NAME   := main.cpp  animal.cpp cat.cpp dog.cpp brain.cpp
 # Librerias
 HEAD_DIR   := .
-HEAD_NAME  :=  animal.hpp  cat.hpp dog.hpp wronganimal.hpp wrongcat.hpp
+HEAD_NAME  :=  animal.hpp  cat.hpp dog.hpp brain.hpp
 
 # Directorio de los archivos objeto
 OBJ_DIR    := .
