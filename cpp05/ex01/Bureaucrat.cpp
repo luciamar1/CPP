@@ -69,7 +69,7 @@ void   Bureaucrat::decrementGrade()
         range = grade;
 }
 
-void Bureaucrat::signForm(Form _form)
+void Bureaucrat::signForm(Form &_form)
 {
     try
     {
@@ -82,3 +82,8 @@ void Bureaucrat::signForm(Form _form)
     
 }
 
+std::ostream    &operator<<(std::ostream &out, Bureaucrat &_bureaucrat)
+{
+    out << _bureaucrat.getName() << ", bureaucrat grade " << _bureaucrat.getGrade() << std::endl;
+    return(out);
+}

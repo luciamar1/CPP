@@ -65,3 +65,9 @@ void    Form::beSigned(Bureaucrat   &_bur)
         sign = true;
     }
 }
+
+std::ostream    &operator<<(std::ostream &out, Form &_form)
+{
+    out << _form.getName() << ", form grade SIGN " << _form.getRangeSign() << ", form grade EXECUTE " << _form.getRangeExecute() << " ¿FIRMED?: "<< _form.getSign() << std::endl;
+    return(out);
+}

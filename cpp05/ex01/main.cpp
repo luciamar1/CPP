@@ -3,7 +3,7 @@
 int main() {
     try {
         Bureaucrat bureaucrat("John", 5);
-        Form form("Tax Form", 10, 20);
+        Form form("Tax Form", 90, 20);
 
         std::cout << form << std::endl;
 
