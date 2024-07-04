@@ -68,6 +68,9 @@ void    Form::beSigned(Bureaucrat   &_bur)
 
 std::ostream    &operator<<(std::ostream &out, Form &_form)
 {
-    out << _form.getName() << ", form grade SIGN " << _form.getRangeSign() << ", form grade EXECUTE " << _form.getRangeExecute() << " ¿FIRMED?: "<< _form.getSign() << std::endl;
+    // out << "Form: " << _form.getName() << ", Signed: " << (_form.getSign() ? "Yes" : "No")
+    //     << ", Required Grade to Sign: " << _form.getRangeSign()
+    //     << ", Required Grade to Execute: " << _form.getRangeExecute();
+    out << _form.getName() << ", required grade to SIGN: " << _form.getRangeSign() << ", required grade to EXECUTE: " << _form.getRangeExecute() << ",  ¿FIRMED?: "<< _form.getSign() << std::endl;
     return(out);
 }
