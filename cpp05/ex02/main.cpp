@@ -14,6 +14,7 @@ int main() {
         ShrubberyCreationForm shrubbery("home");
         RobotomyRequestForm robotomy("robot");
         PresidentialPardonForm pardon("criminal");
+        ShrubberyCreationForm shrubbery_("noFirmed");
 
         std::cout << alice << std::endl;
         std::cout << bob << std::endl;
@@ -42,6 +43,15 @@ int main() {
         } catch (const std::exception &e) {
             std::cerr << e.what() << std::endl;
         }
+        std::cout <<"\n" << std::endl;
+
+        try {
+            alice.executeForm(shrubbery_);
+        } catch (const std::exception &e) {
+            std::cerr << e.what() << std::endl;
+        }
+        std::cout <<"\n" << std::endl;
+
 
         // Fail to sign PresidentialPardonForm with low grade bureaucrat
         try {
@@ -60,6 +70,6 @@ int main() {
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-
+    
     return 0;
 }

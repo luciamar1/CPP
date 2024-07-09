@@ -4,6 +4,7 @@
 #include <string>
 #include  "Bureaucrat.hpp"
 #include <iostream>
+#include <cstdlib> 
 
 
 class Bureaucrat;
@@ -25,6 +26,19 @@ public:
     bool  getSign() const;
 
     void    beSigned(Bureaucrat &_bur);
+
+    class FormWasSignedException:public std::exception
+    {
+         public:
+            const char *what() const throw();
+    };
+
+    class FormNotSignedException:public std::exception
+    {
+         public:
+            const char *what() const throw();
+    };
+
     class GradeTooHighException: public std::exception
     {
         public:

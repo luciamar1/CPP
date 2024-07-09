@@ -10,26 +10,32 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string _file)
 ShrubberyCreationForm::~ShrubberyCreationForm()
 { }
 
-void    ShrubberyCreationForm::executeAction(Bureaucrat &_bur) const
+void    ShrubberyCreationForm::executeAction(const Bureaucrat &_bur) const
 {
+     if (this->getSign() == false)
+        throw FormNotSignedException();
     if (getRangeExecute() < _bur.getGrade())
         throw GradeTooLowException();
   
     else
     {
-        std::ofstream file(file + "_shrubbery");
-        file << "       ccee88oo" << std::endl;
-        file << " C8O8O8Q8PoOb o8oo" << std::endl;
-        file << " dOB69QO8PdUOpugoO9bD" << std::endl;
-        file << "CgggbU8OU qOp qOdoUOdcb" << std::endl;
-        file << "   6OuU  /p u gcoUodpP" << std::endl;
-        file << "      \\\\//  /douUP" << std::endl;
-        file << "        \\\\////" << std::endl;
-        file << "         |||/\\" << std::endl;
-        file << "         |||\\/" << std::endl;
-        file << "         |||||" << std::endl;
-        file << "   .....//||||\\...." << std::endl;
-        file.close();
+        std::string nameFile;
+        nameFile = file + "_shrubbery";
+        std::cout << _bur.getName() << " execute " << this->getName ()<<std::endl;
+        std::ofstream    valueFile( nameFile.c_str());
+        
+        valueFile << "       ccee88oo" << std::endl;
+        valueFile << " C8O8O8Q8PoOb o8oo" << std::endl;
+        valueFile << " dOB69QO8PdUOpugoO9bD" << std::endl;
+        valueFile << "CgggbU8OU qOp qOdoUOdcb" << std::endl;
+        valueFile << "   6OuU  /p u gcoUodpP" << std::endl;
+        valueFile << "      \\\\//  /douUP" << std::endl;
+        valueFile << "        \\\\////" << std::endl;
+        valueFile << "         |||/\\" << std::endl;
+        valueFile << "         |||\\/" << std::endl;
+        valueFile << "         |||||" << std::endl;
+        valueFile << "   .....//||||\\...." << std::endl;
+        valueFile.close();
 
     }
 }

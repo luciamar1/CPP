@@ -54,10 +54,21 @@ const char* AForm::GradeTooLowException::what() const throw()
     return "Grade too low";
 }
 
+ const char* AForm::FormWasSignedException::what() const throw() 
+{
+    return "has already been signed";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() 
+{
+    return "Form not signed!";
+}
 
 
 void    AForm::beSigned(Bureaucrat   &_bur)
 {
+    if (this->getSign() == true)
+        throw FormWasSignedException();
     if (requiredRangeSign < _bur.getGrade())
         throw GradeTooLowException();
     else
