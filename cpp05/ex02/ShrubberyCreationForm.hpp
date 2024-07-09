@@ -16,7 +16,7 @@ public:
     ShrubberyCreationForm();
     ShrubberyCreationForm(const std::string   _file);
     ~ShrubberyCreationForm();
-    void executeAction(Bureaucrat &_bur) const;
+    void executeAction(const Bureaucrat &_bur) const;
 };
 
 #endif

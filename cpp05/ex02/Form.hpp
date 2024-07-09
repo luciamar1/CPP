@@ -19,10 +19,10 @@ public:
     AForm();
     AForm(const std::string   _name, int  _rgsign, int _rexecute);
     virtual ~AForm();
-    int getRangeSign();
-   const  int getRangeExecute();
-    std::string  getName();
-    bool  getSign();
+    int getRangeSign() const;
+   int getRangeExecute() const;
+    std::string  getName() const;
+    bool  getSign() const;
 
     void    beSigned(Bureaucrat &_bur);
     class GradeTooHighException: public std::exception
@@ -35,7 +35,7 @@ public:
         public:
             const char *what() const throw();
     };
-    virtual void    executeAction(Bureaucrat &_bur) const = 0;
+    virtual void    executeAction(const Bureaucrat &_bur) const = 0;
 };
 
 std::ostream    &operator<<(std::ostream &out, AForm &_AForm);

@@ -23,22 +23,22 @@ AForm::~AForm()
 {
 }
 
-int AForm::getRangeSign()
+int AForm::getRangeSign() const
 {
     return(requiredRangeSign);
 }
 
-int AForm::getRangeExecute()
+int AForm::getRangeExecute() const
 {
     return(requiredRangeExecute);
 }
 
- std::string  AForm::getName()
+ std::string  AForm::getName() const
  {
     return(name);
  }
  
- bool   AForm::getSign()
+ bool   AForm::getSign() const
  {
     return(sign);
  }
@@ -65,6 +65,8 @@ void    AForm::beSigned(Bureaucrat   &_bur)
         sign = true;
     }
 }
+
+
 
 std::ostream    &operator<<(std::ostream &out, AForm &_Aform)
 {

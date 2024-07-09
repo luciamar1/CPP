@@ -16,7 +16,7 @@ public:
     RobotomyRequestForm();
     RobotomyRequestForm(const std::string   _file);
     ~RobotomyRequestForm();
-    void executeAction(Bureaucrat &_bur) const;
+    void executeAction(const Bureaucrat &_bur) const;
 };
 
 #endif

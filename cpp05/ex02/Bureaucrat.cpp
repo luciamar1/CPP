@@ -16,7 +16,7 @@ Bureaucrat::~Bureaucrat()
 {
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
     return(range);
 }
@@ -29,7 +29,7 @@ int Bureaucrat::getGrade()
         range = grade;
  }
 
- std::string  Bureaucrat::getName()
+ std::string  Bureaucrat::getName() const
  {
     return(name);
  }
@@ -58,6 +58,19 @@ void   Bureaucrat::incrementGrade()
         throw GradeTooHighException();
     else
         range = grade;
+}
+
+void    Bureaucrat::executeForm(AForm &_form) const
+{
+    try
+    {
+        _form.executeAction(*this);
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << name << " couldn’t sign " << _form.getName() << " because " << e.what() << std::endl;
+    }
+    
 }
 
 void   Bureaucrat::decrementGrade()

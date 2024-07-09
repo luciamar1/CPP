@@ -3,11 +3,11 @@ NAME       := bureaucrat
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp  Bureaucrat.cpp Form.cpp
+SRC_NAME   := main.cpp  Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 # Librerias
 HEAD_DIR   := .
-HEAD_NAME  :=  Bureaucrat.hpp Form.hpp
+HEAD_NAME  :=  Bureaucrat.hpp Form.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
 
 # Directorio de los archivos objeto
 OBJ_DIR    := .
