@@ -4,6 +4,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
 
 int main() {
     try {
@@ -11,10 +12,10 @@ int main() {
         Bureaucrat bob("Bob", 150);
         Bureaucrat charlie("Charlie", 50);
 
-        ShrubberyCreationForm shrubbery("home");
-        RobotomyRequestForm robotomy("robot");
-        PresidentialPardonForm pardon("criminal");
-        ShrubberyCreationForm shrubbery_("noFirmed");
+        Intern someRandomIntern;
+        AForm *scf = someRandomIntern.makeForm("ShrubberyCreationForm", "home");
+        AForm *rrf = someRandomIntern.makeForm("RobotomyRequestForm", "robot");
+        AForm *ppf = someRandomIntern.makeForm("PresidentialPardonForm", "criminal");
 
         std::cout << alice << std::endl;
         std::cout << bob << std::endl;
@@ -22,54 +23,51 @@ int main() {
 
         // Try to sign and execute ShrubberyCreationForm
         try {
-            charlie.signForm(shrubbery);
-            charlie.executeForm(shrubbery);
+            charlie.signForm(*scf);
+            charlie.executeForm(*scf);
         } catch (const std::exception &e) {
             std::cerr << e.what() << std::endl;
         }
+        std::cout << "\n" << std::endl;
 
         // Try to sign and execute RobotomyRequestForm
         try {
-            charlie.signForm(robotomy);
-            charlie.executeForm(robotomy);
+            charlie.signForm(*rrf);
+            charlie.executeForm(*rrf);
         } catch (const std::exception &e) {
             std::cerr << e.what() << std::endl;
         }
-
+        std::cout << "\n" << std::endl;
         // Try to sign and execute PresidentialPardonForm
         try {
-            alice.signForm(pardon);
-            alice.executeForm(pardon);
+            alice.signForm(*ppf);
+            alice.executeForm(*ppf);
         } catch (const std::exception &e) {
             std::cerr << e.what() << std::endl;
         }
-        std::cout <<"\n" << std::endl;
-
-        try {
-            alice.executeForm(shrubbery_);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << std::endl;
-        }
-        std::cout <<"\n" << std::endl;
-
-
+        std::cout << "\n" << std::endl;
         // Fail to sign PresidentialPardonForm with low grade bureaucrat
         try {
-            bob.signForm(pardon);
+            bob.signForm(*ppf);
         } catch (const std::exception &e) {
             std::cerr << e.what() << std::endl;
         }
+        std::cout << "\n" << std::endl;
 
         // Fail to execute RobotomyRequestForm with low grade bureaucrat
         try {
-            bob.executeForm(robotomy);
+            bob.executeForm(*rrf);
         } catch (const std::exception &e) {
             std::cerr << e.what() << std::endl;
         }
+        std::cout << "\n" << std::endl;
+        delete scf;
+        delete rrf;
+        delete ppf;
 
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-    
+
     return 0;
 }

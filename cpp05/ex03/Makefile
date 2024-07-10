@@ -1,13 +1,13 @@
 # Nombre del programa
-NAME       := bureaucrat
+NAME       := intern
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp  Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRC_NAME   := main.cpp  Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp 
 
 # Librerias
 HEAD_DIR   := .
-HEAD_NAME  :=  Bureaucrat.hpp Form.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
+HEAD_NAME  :=  Bureaucrat.hpp Form.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp Intern.hpp
 
 # Directorio de los archivos objeto
 OBJ_DIR    := .

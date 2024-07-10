@@ -1,7 +1,6 @@
 #ifndef INTERN_HPP
 #define INTERN_HPP
 
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -11,8 +10,9 @@ class Intern : public Bureaucrat
 {
 public:
     Intern();
+    Intern(const Intern &other);
     ~Intern();
-   Form *makeForm(std::string nameForm, std::string target) const;
+   AForm *makeForm(const std::string nameForm, const std::string target) ;
 };
 
 #endif 
