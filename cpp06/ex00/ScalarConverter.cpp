@@ -21,15 +21,16 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 ScalarConverter::~ScalarConverter() {}
 
 
-static bool isChar(const std::string& literal)
+ bool ScalarConverter::isChar(const std::string& literal)
 {
     if(literal.length() == 3 && literal[0] == '\'' && literal[2] == '\'')
         return true;
     return false;
 }
 
-static bool isInt(const std::string& literal)
+ bool ScalarConverter::isInt(const std::string& literal)
 {
+    char *endptr;
     try
     {
         std::strtol(literal.c_str(), &endptr,  10);
@@ -41,11 +42,13 @@ static bool isInt(const std::string& literal)
     }
 }
 
-static bool isFloat(const std::string& literal)
+ bool ScalarConverter::isFloat(const std::string& literal)
 {
+
+    char *endptr;
     try
     {
-        std::stof(literal);
+        std::strtof(literal.c_str(), &endptr);
         return true;
     }
     catch(...)
@@ -54,11 +57,12 @@ static bool isFloat(const std::string& literal)
     }
 }
 
-static bool isDouble(const std::string& literal)
+ bool ScalarConverter::isDouble(const std::string& literal)
 {
+     char *endptr;
     try
     {
-        std::stod(literal);
+        std::strtod(literal.c_str(), &endptr);
         return true;
     }
     catch(...)
@@ -82,7 +86,7 @@ static bool isDouble(const std::string& literal)
 
   void ScalarConverter::printFloat(float literal)
  {
-    std::cout << "Float : " << literal << std::endl;
+    std::cout << "Float : " << literal << "f" << std::endl;
  }
 
  void ScalarConverter::printDouble(double literal)
@@ -93,6 +97,7 @@ static bool isDouble(const std::string& literal)
 
 void ScalarConverter::convert(const std::string& literal)
 {
+    char *ptr;
     if (isChar(literal))
     {
         char lit = literal[1];
@@ -101,19 +106,19 @@ void ScalarConverter::convert(const std::string& literal)
 
      if (isInt(literal))
     {
-        int lit = stoi(literal);
+        int lit = strtol(literal.c_str(), &ptr, 10);
         printInt(lit);
     }
 
      if (isFloat(literal))
     {
-        float lit = stof(literal);
+        float lit = strtof(literal.c_str(), &ptr);
         printFloat(lit);
     }
 
     if (isDouble(literal))
     {
-        double lit = stoi(literal);
+        double lit = strtod(literal.c_str(), &ptr);
         printDouble(lit);
     }
 }
