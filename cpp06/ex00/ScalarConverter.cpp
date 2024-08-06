@@ -81,7 +81,8 @@ ScalarConverter::~ScalarConverter() {}
         std::cout << "char: '" << literal << "'" << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl;
-    printInt(literal);
+    std::cout << static convert <int>
+    
     printFloat(literal);
     printDouble(literal);
 }
@@ -97,7 +98,8 @@ ScalarConverter::~ScalarConverter() {}
   void ScalarConverter::printFloat(float literal)
  {
     printChar(literal);
-    printInt(literal);
+    std::cout << static convert <int>
+    
     std::cout << "Float : " << literal << "f" << std::endl;
     printDouble(literal);
  }
@@ -105,7 +107,8 @@ ScalarConverter::~ScalarConverter() {}
  void ScalarConverter::printDouble(double literal)
  {
     printChar(literal);
-    printInt(literal);
+    std::cout << static convert <int>
+    
     printFloat(literal);
     std::cout << std::fixed << std::setprecision(1);
     std::cout << "Double : " << literal << std::endl;
