@@ -23,8 +23,12 @@ ScalarConverter::~ScalarConverter() {}
 
  bool ScalarConverter::isChar(const std::string& literal)
 {
-    if(literal.length() == 3 && literal[0] == '\'' && literal[2] == '\'')
+    if(  literal.length() == 1 && !isdigit(literal[0]))
+    {
+        std::cout << "true char " <<  literal << std::endl;
         return true;
+    }
+    std::cout << "false char " << literal << std::endl;
     return false;
 }
 
@@ -77,20 +81,32 @@ ScalarConverter::~ScalarConverter() {}
         std::cout << "char: '" << literal << "'" << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl;
+    printInt(literal);
+    printFloat(literal);
+    printDouble(literal);
 }
 
   void ScalarConverter::printInt(int literal)
  {
+    printChar(literal);
     std::cout << "Int : " << literal << std::endl;
+    printFloat(literal);
+    printDouble(literal);
  }
 
   void ScalarConverter::printFloat(float literal)
  {
+    printChar(literal);
+    printInt(literal);
     std::cout << "Float : " << literal << "f" << std::endl;
+    printDouble(literal);
  }
 
  void ScalarConverter::printDouble(double literal)
  {
+    printChar(literal);
+    printInt(literal);
+    printFloat(literal);
     std::cout << std::fixed << std::setprecision(1);
     std::cout << "Double : " << literal << std::endl;
  }
@@ -98,27 +114,31 @@ ScalarConverter::~ScalarConverter() {}
 void ScalarConverter::convert(const std::string& literal)
 {
     char *ptr;
+    ptr =  NULL;
     if (isChar(literal))
     {
-        char lit = literal[1];
-        printChar(lit);
+        printChar(literal[0]);
+        std::cout <<"GUATAFAAAC" << std::endl;
+        return ;
     }
 
-     if (isInt(literal))
+     else if (isInt(literal))
     {
-        int lit = strtol(literal.c_str(), &ptr, 10);
+        int lit = atoi(literal.c_str());
+        std::cout << lit << literal.c_str() <<  std::endl;
         printInt(lit);
     }
 
-     if (isFloat(literal))
+     else if (isFloat(literal))
     {
         float lit = strtof(literal.c_str(), &ptr);
         printFloat(lit);
     }
 
-    if (isDouble(literal))
+    else if (isDouble(literal))
     {
         double lit = strtod(literal.c_str(), &ptr);
         printDouble(lit);
     }
+    return ;
 }
