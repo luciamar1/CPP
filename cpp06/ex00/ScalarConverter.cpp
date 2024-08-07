@@ -46,8 +46,9 @@ ScalarConverter::~ScalarConverter() {}
 
  bool ScalarConverter::isFloat(const std::string& literal)
 {
-    if(literal.find('f'))
+    if(*literal.end() == 'f')
     {
+        std::cout  << "GUATAFAC FLOAT  " << literal << std::endl;
         return(true);
     }
     else
@@ -73,7 +74,7 @@ ScalarConverter::~ScalarConverter() {}
         
     std::cout << "Int: " << static_cast <int>(literal) << std::endl;
     std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
-    std::cout << "Double : " << static_cast <double>  (literal) << ".0" << std::endl;
+    std::cout << "Double : " << static_cast <double>  (literal) << std::endl;
 }
 
   void ScalarConverter::printInt(int literal)
@@ -85,7 +86,7 @@ ScalarConverter::~ScalarConverter() {}
         std::cout << "char: Non displayable" << std::endl;
     std::cout << "Int : " << literal << std::endl;
     std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
-    std::cout << "Double : " << static_cast <double>  (literal) << ".0" << std::endl;
+    std::cout << "Double : " << static_cast <double>  (literal)  << std::endl;
  }
 
   void ScalarConverter::printFloat(float literal)
@@ -101,7 +102,7 @@ ScalarConverter::~ScalarConverter() {}
     else
         std::cout << "impossible" << std::endl;
     std::cout << "Float : " << literal << "f" << std::endl;
-    std::cout << "Double : " << static_cast <double>  (literal) << ".0" << std::endl;
+    std::cout << "Double : " << static_cast <double>  (literal) << std::endl;
  }
 
  void ScalarConverter::printDouble(double literal)
