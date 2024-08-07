@@ -9,6 +9,13 @@
 #include <cctype>
 #include <iomanip>
 
+#ifndef MAX_INT 
+#define MAX_INT 2147483647
+#endif
+
+#ifndef MIN_INT 
+#define MIN_INT -2147483648
+#endif
 class ScalarConverter
 {
 private:

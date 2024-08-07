@@ -25,91 +25,98 @@ ScalarConverter::~ScalarConverter() {}
 {
     if(  literal.length() == 1 && !isdigit(literal[0]))
     {
-        std::cout << "true char " <<  literal << std::endl;
         return true;
     }
-    std::cout << "false char " << literal << std::endl;
     return false;
 }
 
  bool ScalarConverter::isInt(const std::string& literal)
 {
     char *endptr;
-    try
+    int     number;
+
+    number = std::strtol(literal.c_str(), &endptr,  10);
+    if(!endptr && literal.length()<= 11 && number >= MIN_INT && number<= MAX_INT)
     {
-        std::strtol(literal.c_str(), &endptr,  10);
         return true;
     }
-    catch(...)
-    {
+    else 
         return(false);
-    }
 }
 
  bool ScalarConverter::isFloat(const std::string& literal)
 {
-
-    char *endptr;
-    try
+    if(literal.find('f'))
     {
-        std::strtof(literal.c_str(), &endptr);
-        return true;
+        return(true);
     }
-    catch(...)
-    {
+    else
         return(false);
-    }
 }
 
  bool ScalarConverter::isDouble(const std::string& literal)
 {
-     char *endptr;
-    try
+      if(literal.find('.'))
     {
-        std::strtod(literal.c_str(), &endptr);
-        return true;
+        return(true);
     }
-    catch(...)
-    {
+    else
         return(false);
-    }
 }
 
  void ScalarConverter::printChar(char literal) 
 {
     if (std::isprint(literal))
-        std::cout << "char: '" << literal << "'" << std::endl;
+        std::cout << "Char: " << literal << "" << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl;
-    std::cout << static convert <int>
-    
-    printFloat(literal);
-    printDouble(literal);
+        
+    std::cout << "Int: " << static_cast <int>(literal) << std::endl;
+    std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
+    std::cout << "Double : " << static_cast <double>  (literal) << ".0" << std::endl;
 }
 
   void ScalarConverter::printInt(int literal)
  {
-    printChar(literal);
+     std::cout << "INT"  << std::endl;
+    if (std::isprint(static_cast<char>(literal)))
+        std::cout << "Char: " << static_cast<char>(literal) << "" << std::endl;
+    else
+        std::cout << "char: Non displayable" << std::endl;
     std::cout << "Int : " << literal << std::endl;
-    printFloat(literal);
-    printDouble(literal);
+    std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
+    std::cout << "Double : " << static_cast <double>  (literal) << ".0" << std::endl;
  }
 
   void ScalarConverter::printFloat(float literal)
  {
-    printChar(literal);
-    std::cout << static convert <int>
+     std::cout << "FLOAT"  << std::endl;
+    if (std::isprint(static_cast<char>(literal)))
+        std::cout << "Char: " << static_cast<char>(literal) << "" << std::endl;
+    else
+        std::cout << "char: Non displayable" << std::endl;
     
+    if((static_cast<int> (literal)) >= MIN_INT && (static_cast<int> (literal))<= MAX_INT)
+        std::cout << "Int: " << static_cast <int>(literal) << std::endl;
+    else
+        std::cout << "impossible" << std::endl;
     std::cout << "Float : " << literal << "f" << std::endl;
-    printDouble(literal);
+    std::cout << "Double : " << static_cast <double>  (literal) << ".0" << std::endl;
  }
 
  void ScalarConverter::printDouble(double literal)
  {
-    printChar(literal);
-    std::cout << static convert <int>
+    std::cout << "DOUBLE"  << std::endl;
+    if (std::isprint(static_cast<char>(literal)))
+        std::cout << "Char: " << static_cast<char>(literal) << "" << std::endl;
+    else
+        std::cout << "char: Non displayable" << std::endl;
     
-    printFloat(literal);
+    if((static_cast<int> (literal)) >= MIN_INT && (static_cast<int> (literal))<= MAX_INT)
+        std::cout << "Int: " << static_cast <int>(literal) << std::endl;
+    else
+        std::cout << "impossible" << std::endl;
+    std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
     std::cout << std::fixed << std::setprecision(1);
     std::cout << "Double : " << literal << std::endl;
  }
@@ -121,14 +128,12 @@ void ScalarConverter::convert(const std::string& literal)
     if (isChar(literal))
     {
         printChar(literal[0]);
-        std::cout <<"GUATAFAAAC" << std::endl;
         return ;
     }
 
      else if (isInt(literal))
     {
         int lit = atoi(literal.c_str());
-        std::cout << lit << literal.c_str() <<  std::endl;
         printInt(lit);
     }
 
