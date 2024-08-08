@@ -4,6 +4,7 @@
 
 ScalarConverter::ScalarConverter(){}
 
+
 ScalarConverter::ScalarConverter(ScalarConverter &other)
 {
     *this = other;
@@ -18,7 +19,10 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
     return(*this);
  }
 
+
 ScalarConverter::~ScalarConverter() {}
+
+
 
 
  bool ScalarConverter::isChar(const std::string& literal)
@@ -30,13 +34,15 @@ ScalarConverter::~ScalarConverter() {}
     return false;
 }
 
+
  bool ScalarConverter::isInt(const std::string& literal)
 {
     char *endptr;
-    int     number;
+    long     number;
+    endptr = NULL;
 
     number = std::strtol(literal.c_str(), &endptr,  10);
-    if(!endptr && literal.length()<= 11 && number >= MIN_INT && number<= MAX_INT)
+    if( !*endptr && literal.length()<= 11 && number >= MIN_INT && number<= MAX_INT)
     {
         return true;
     }
@@ -46,9 +52,8 @@ ScalarConverter::~ScalarConverter() {}
 
  bool ScalarConverter::isFloat(const std::string& literal)
 {
-    if(*literal.end() == 'f')
+    if(*(literal.end() - 1) == 'f')
     {
-        std::cout  << "GUATAFAC FLOAT  " << literal << std::endl;
         return(true);
     }
     else
@@ -57,7 +62,9 @@ ScalarConverter::~ScalarConverter() {}
 
  bool ScalarConverter::isDouble(const std::string& literal)
 {
-      if(literal.find('.'))
+    char *endptr;
+    strtod(literal.c_str(), &endptr);
+	if (!*endptr)
     {
         return(true);
     }
@@ -65,16 +72,18 @@ ScalarConverter::~ScalarConverter() {}
         return(false);
 }
 
+
+
  void ScalarConverter::printChar(char literal) 
 {
     if (std::isprint(literal))
         std::cout << "Char: " << literal << "" << std::endl;
     else
-        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "Char: Non displayable" << std::endl;
         
     std::cout << "Int: " << static_cast <int>(literal) << std::endl;
     std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
-    std::cout << "Double : " << static_cast <double>  (literal) << std::endl;
+    std::cout << "Double : " << static_cast <double>  (literal) << ".0" << std::endl;
 }
 
   void ScalarConverter::printInt(int literal)
@@ -83,10 +92,13 @@ ScalarConverter::~ScalarConverter() {}
     if (std::isprint(static_cast<char>(literal)))
         std::cout << "Char: " << static_cast<char>(literal) << "" << std::endl;
     else
-        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "Char: Non displayable" << std::endl;
     std::cout << "Int : " << literal << std::endl;
     std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
-    std::cout << "Double : " << static_cast <double>  (literal)  << std::endl;
+    if (std::floor(literal) == literal && literal < 1000000 && literal > -1000000)
+		std::cout << "Double: " <<  literal <<".0" << std::endl;
+    else
+        std::cout << "Double: " <<  literal << std::endl;
  }
 
   void ScalarConverter::printFloat(float literal)
@@ -95,14 +107,22 @@ ScalarConverter::~ScalarConverter() {}
     if (std::isprint(static_cast<char>(literal)))
         std::cout << "Char: " << static_cast<char>(literal) << "" << std::endl;
     else
-        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "Char: Non displayable" << std::endl;
     
-    if((static_cast<int> (literal)) >= MIN_INT && (static_cast<int> (literal))<= MAX_INT)
+    if((static_cast<long> (literal)) >= MIN_INT && (static_cast<long> (literal))<= MAX_INT)
         std::cout << "Int: " << static_cast <int>(literal) << std::endl;
     else
-        std::cout << "impossible" << std::endl;
-    std::cout << "Float : " << literal << "f" << std::endl;
-    std::cout << "Double : " << static_cast <double>  (literal) << std::endl;
+        std::cout << "Int: impossible" << std::endl;
+
+
+    if (std::floor(literal) == literal  && literal < 1000000 && literal > -1000000 )
+		std::cout <<"Float : " << literal <<".0f" << std::endl;
+	else
+		std::cout << "Float : " << literal << "f" << std::endl;
+    if (std::floor(literal) == literal && literal < 1000000 && literal > -1000000)
+		std::cout << "Double: " <<  literal <<".0" << std::endl;
+    else
+        std::cout << "Double: " <<  literal << std::endl;
  }
 
  void ScalarConverter::printDouble(double literal)
@@ -111,16 +131,24 @@ ScalarConverter::~ScalarConverter() {}
     if (std::isprint(static_cast<char>(literal)))
         std::cout << "Char: " << static_cast<char>(literal) << "" << std::endl;
     else
-        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "Char: Non displayable" << std::endl;
     
-    if((static_cast<int> (literal)) >= MIN_INT && (static_cast<int> (literal))<= MAX_INT)
+    if((static_cast<long> (literal)) >= MIN_INT && (static_cast<long> (literal))<= MAX_INT)
         std::cout << "Int: " << static_cast <int>(literal) << std::endl;
     else
-        std::cout << "impossible" << std::endl;
-    std::cout << "Float: "<< static_cast <float>(literal) << ".0f" <<  std::endl;
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << "Double : " << literal << std::endl;
+        std::cout << "Int: impossible" << std::endl;
+    
+    if (std::floor(literal) == literal  && literal < 1000000 && literal > -1000000 )
+        std::cout << "Float : " << literal << ".0f" << std::endl;
+	else
+		std::cout <<"Float : " << literal <<  "f" << std::endl;
+	if (std::floor(literal) == literal && literal < 1000000 && literal > -1000000)
+		std::cout << "Double: " <<  literal <<".0" << std::endl;
+    else
+        std::cout << "Double: " <<  literal << std::endl;
  }
+
+
 
 void ScalarConverter::convert(const std::string& literal)
 {
@@ -149,5 +177,7 @@ void ScalarConverter::convert(const std::string& literal)
         double lit = strtod(literal.c_str(), &ptr);
         printDouble(lit);
     }
+    else 
+        std::cout << "impossible conversion" <<std::endl;
     return ;
 }
