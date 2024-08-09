@@ -1,33 +1,61 @@
 #include "Base.hpp"
 
-Base::Base(){}
-
-
-Base::Base(Base &other)
-{
-    *this = other;
-}
-
-Base& Base::operator=(const Base& other) 
-{
-     if(this != &other)
-    {
-        ;*this = other;
-    }
-    return(*this);
- }
-
-
 Base::~Base() {}
 
-
-
-uintptr_t Base::serialize(Data* ptr)
+Base * generate(void)
 {
-    return(reinterpret_cast<uintptr_t>(ptr));
+    int  random = std::rand() % 3;
+    switch (random)
+    {
+        case 0:
+            return(new A());
+        case 1:
+            return(new B());
+        case 2:
+            return(new C());
+        default:
+            return NULL;
+    }
 }
 
-Data* Base::deserialize(uintptr_t raw)
+void identify(Base* p)
 {
-    return(reinterpret_cast<Data *>(raw));
+    if (dynamic_cast<A *>(p))
+    {
+        std::cout << "Type A" << std::endl;
+    }
+
+    if (dynamic_cast<B *>(p))
+    {
+        std::cout << "Type B" << std::endl;
+    }
+
+    if (dynamic_cast<C *>(p))
+    {
+        std::cout << "Type C" << std::endl;
+    }
+}
+
+void identify(Base& p)
+{
+    try
+    {
+        (void)( dynamic_cast<A&>(p));
+        std::cout << "Type A" << std::endl;
+    }
+    catch (std::bad_cast&){}
+
+    try
+    {
+        (void)( dynamic_cast<B&>(p));
+        std::cout << "Type B" << std::endl;
+    }
+    catch (std::bad_cast&){}
+
+    try
+    {
+        (void)( dynamic_cast<C&>(p));
+        std::cout << "Type C" << std::endl;
+    }
+    catch (std::bad_cast&){}
 }

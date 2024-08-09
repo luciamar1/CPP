@@ -3,11 +3,11 @@ NAME       := Serialization
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp  serialization.cpp 
+SRC_NAME   := main.cpp  Base.cpp 
 
 # Librerias
 HEAD_DIR   := .
-HEAD_NAME  :=  serialization.hpp
+HEAD_NAME  :=  Base.hpp
 
 # Directorio de los archivos objeto
 OBJ_DIR    := .
