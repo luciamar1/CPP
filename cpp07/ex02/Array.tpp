@@ -1,27 +1,3 @@
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
-
-#include <iostream>
-template<typename T>
-class Array
-{
-private:
-    T *  elements;
-    unsigned int n;
-public:
-    Array();
-    Array(unsigned int size);
-    Array(const Array& other);
-    ~Array();
-
-    unsigned int size() const;
-
-    T& operator[](unsigned int index);
-    const T& operator[](unsigned int index) const;
-
-
-};
-
 #include "Array.hpp"
 
 template<typename T>
@@ -31,15 +7,14 @@ Array<T>::Array()
 }
 
 template<typename T>
-Array<T>::Array(unsigned int size)
+Array<T>::Array(unsigned int n)
 {
     if(n  <= 0)
     {
         elements = NULL;
     }
     else
-        elements = new T[n];
-    n = size;
+        elements = new T[n]
 }
 
 template<typename T>
@@ -53,22 +28,22 @@ Array<T>::Array(const Array& other)
     else
     {
         elements = new T[n];
-        for(int i = 0; i < n;  i++)
+        for(i = 0; i < n;  i++)
         {
             elements[i] = other.elements[i];
         }
     }
-
-}
 
     template<typename T>
     Array<T>::~Array()
     {
         delete[] elements;
     }
+}
+
 
 template<typename T>
-unsigned int Array<T>::size() const
+Array<T>::size()
 {
     return n;
 }
@@ -76,7 +51,7 @@ unsigned int Array<T>::size() const
 template<typename T>
  T& Array<T>::operator[](unsigned int index)
  {
-    if(index >= n)
+    if(index <= n)
         throw std::out_of_range("Index out of bounds");
     return
         elements[index];
@@ -91,9 +66,5 @@ const T& Array<T>::operator[](unsigned int index) const
     return
         elements[index];
  }
-
-
-
-#endif
 
 

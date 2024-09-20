@@ -3,7 +3,7 @@ NAME       := Array
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp  Array.cpp
+SRC_NAME   := main.cpp 
 
 # Librerias
 HEAD_DIR   := .
