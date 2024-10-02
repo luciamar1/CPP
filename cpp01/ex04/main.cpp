@@ -21,11 +21,14 @@ std::string replaceFile(std::string& str_file, const std::string str1, const std
     std::string result;
     std::string::size_type pos;
     int counter = 0;
+
     if(str1.empty() || str2.empty())
         return(str_file);
+    
     while(str_file[counter])
     {
         pos = str_file.find(str1, counter);
+
         if (pos  != std::string::npos)
         {
 
@@ -35,6 +38,7 @@ std::string replaceFile(std::string& str_file, const std::string str1, const std
             std::cout << "2        " << result << std::endl;
             counter = pos + str1.length();
         }
+        
         else 
             break;
     }
