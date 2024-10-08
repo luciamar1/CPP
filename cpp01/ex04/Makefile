@@ -16,7 +16,7 @@ SRC        := $(addprefix $(SRC_DIR)/,$(SRC_NAME))
 
 # Compilador y opciones de compilación
 CC         := c++
-CFLAGS     := -c -Wall -Wextra -Werror -std=c++98 -pedantic 
+CFLAGS     := -c -Wall -Wextra -Werror -std=c++98
 # Regla implícita para compilar archivos fuente en archivos objeto
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEAD)
 	$(CC) $(CFLAGS) $< -o $@
