@@ -1,41 +1,39 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed():fixedPoint(0)
+Fixed::Fixed()
 {
-   // std::cout << "Default constructor called" << std::endl;
+    this->fixedPoint = 0;
+    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed&  originalFixed)
-    :fixedPoint(originalFixed.fixedPoint)
 {
-   // std::cout << "Copy constructor called" << std::endl;
-    *this = originalFixed;
+    std::cout << "Copy constructor called" << std::endl;
+    this->fixedPoint = originalFixed.fixedPoint;
 }
 
 Fixed::Fixed(const int&  fPoint)
 {
-   // std::cout << "Int constructor called" << std::endl;
-    fixedPoint =  fPoint << this->fractionalBits;
-    //fixedPoint = fPoint * (1 << this->fractionalBits);
+    std::cout << "Int constructor called" << std::endl;
+    this->fixedPoint =  fPoint << this->fractionalBits;
 }
 
 Fixed::Fixed(const float&  fPoint)
 {
-   // std::cout << "Float constructor called" << std::endl;
+    std::cout << "Float constructor called" << std::endl;
     float big_value = fPoint * std::pow(2, this->fractionalBits);
     big_value += 0.5f;
     fixedPoint = static_cast<int>(big_value);
-    // fixedPoint = (static_cast<int>(roundf(fPoint * (1 << fractionalBits))))
 }
 
 Fixed::~Fixed() 
 {
-   // std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called: " << fixedPoint << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& original_Fixed)
 {
-    //std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
     if(this != &original_Fixed)
     {
         this->fixedPoint = original_Fixed.getRawBits();
@@ -139,6 +137,9 @@ Fixed Fixed::operator*(const Fixed& other)
 
 Fixed Fixed::operator/(const Fixed& other)
 {
+    if (other.fixedPoint == 0) {
+        throw std::runtime_error("Division by zero");
+    }
     Fixed newFixed;
     
     newFixed.fixedPoint = ((static_cast<int64_t>(fixedPoint) / other.fixedPoint) << fractionalBits);;
@@ -175,7 +176,7 @@ Fixed Fixed::operator--(int)
     return(ret);
 }
 
-Fixed Fixed::min(const Fixed& x, const Fixed& y)
+Fixed const Fixed::min(const Fixed& x, const Fixed& y)
 {
     if(x < y)
         return x;
@@ -190,7 +191,7 @@ Fixed Fixed::min( Fixed& x,  Fixed& y)
         return y;
 }
 
-Fixed Fixed::max(const Fixed& x, const Fixed& y)
+Fixed const Fixed::max(const Fixed& x, const Fixed& y)
 {
     if(x > y)
         return x;

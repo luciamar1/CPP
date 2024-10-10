@@ -58,21 +58,29 @@ unsigned int Span::longestSpan()
     return(longest  - shortest);
 }
 
+int restOrder(int verif, int other)
+{
+    if((verif - other) >= 0)
+        return verif - other;
+    else
+        return other - verif;
+}
+
 unsigned int Span::shortestSpan()
 {
-    int shortest1 = container[0];
-    int shortest2 = container[0];
     unsigned int size  = container.size();
 
     if (!size || size == 1)
         throw(emptyException());
-    for(unsigned int counter = 0; counter <=  size; counter ++)
+
+    std::sort(container.begin(), container.end());
+    int shortestDif = std::numeric_limits<int>::max();
+    int dif;
+    for (unsigned int counter = 1; counter < size ; counter ++)
     {
-        if (container[counter] <= shortest1)
-        {
-            shortest2 = shortest1;
-            shortest1 = container[counter];
-        }
+        dif = container[counter] - container[counter - 1];
+        if(dif < shortestDif) 
+            shortestDif = dif;
     }
-    return(shortest2 - shortest1);
+    return(shortestDif);
 }

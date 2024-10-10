@@ -5,12 +5,14 @@
 Zombie::Zombie(){}
 
 Zombie::Zombie(const std::string& name)
-        : name(name)
-        {}
+        : name(name){}
+
 Zombie::~Zombie() {}
-void Zombie::announce(){
+
+void Zombie::announce()
+{
         std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    }
+}
     
 
 

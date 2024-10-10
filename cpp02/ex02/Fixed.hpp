@@ -35,8 +35,8 @@ public:
     Fixed operator++(void);
     Fixed operator--(void);
 
-    static Fixed min(const Fixed& x, const Fixed& y);
-    static Fixed max(const Fixed& x, const Fixed& y);
+    static const Fixed min(const Fixed& x, const Fixed& y);
+    static const Fixed max(const Fixed& x, const Fixed& y);
 
     static Fixed min(Fixed& x, Fixed& y);
     static Fixed max(Fixed& x, Fixed& y);

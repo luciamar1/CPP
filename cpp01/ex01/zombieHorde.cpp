@@ -1,6 +1,4 @@
 #include "Zombie.hpp"
-#include <iostream>
-#include <iomanip>
 
 Zombie* zombieHorde( int N, std::string name )
 {
@@ -10,7 +8,7 @@ Zombie* zombieHorde( int N, std::string name )
 
     for(int counter = 0; counter < N; counter ++)
     {
-        horde[counter] = Zombie(name);
+        new (&horde[counter]) Zombie(name);
     }
         return horde;
 

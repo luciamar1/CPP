@@ -24,25 +24,7 @@ void Harl::error()
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
     std::cout << std::endl;
 }
-/*
-void    Harl::complain(std::string level)
-{
-    void (Harl::*harlFunctions[4])() = { &Harl::debug, &Harl::info, &Harl::warning,  &Harl::error };
-    std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR" };
-    for(int counter = 0; counter < 4; counter++)
-    {
-        if(level == levels[counter])
-        {
-            while(counter < 4)
-            {
-                std::cout << "[ " << levels[counter] << " ]" << std::endl;
-                (this->*harlFunctions[counter])();
-                counter ++;
-            }
 
-        }
-    }    
-}*/
 int putLevel(std::string level)
 {
     int levelValue;

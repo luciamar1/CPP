@@ -33,4 +33,4 @@ int main()
     std::stack<int> s(mstack); // Copiar el MutantStack en un std::stack
 
     return 0;
-}
+} 

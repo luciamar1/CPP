@@ -26,49 +26,33 @@ void Harl::error()
     std::cout << std::endl;
 }
 
-int putLevel(std::string level)
-{
-    int levelValue;
+// int putLevel(std::string level)
+// {
+//     int levelValue;
 
-    if (level == "DEBUG") 
-        levelValue = 1;
-    else if (level == "INFO") 
-        levelValue = 2;
-    else if (level == "WARNING") 
-        levelValue = 3;
-    else if (level == "ERROR") 
-        levelValue = 4;
-    else 
-        levelValue = 0;
-    return(levelValue);
-}
+//     if (level == "DEBUG") 
+//         levelValue = 1;
+//     else if (level == "INFO") 
+//         levelValue = 2;
+//     else if (level == "WARNING") 
+//         levelValue = 3;
+//     else if (level == "ERROR") 
+//         levelValue = 4;
+//     else 
+//         levelValue = 0;
+//     return(levelValue);
+// }
 
 void    Harl::complain(std::string level)
 {
-    int levelValue = putLevel(level);
-    switch (levelValue)
+    void    (Harl:: *complainMethods[4])(void) = {&Harl::debug, &Harl::info , &Harl:: warning, &Harl::error};
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    for (int counter = 0; counter < 4; counter ++)
     {
-        case 1:
+        if(levels[counter] == level)
         {
-            debug();
-            break;
+            (this->*complainMethods[counter])();
+            return ;
         }
-        case 2:
-        {
-            info();
-            break;
-        }
-        case 3:
-        {
-            warning();
-            break;
-        }
-        case 4:
-        {
-            error();
-            break;
-        }
-        default:
-            break;
     }
 }

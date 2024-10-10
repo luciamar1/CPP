@@ -5,41 +5,32 @@
 
 int main( void )
 {
-    // Fixed a;
-    // Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-    // std::cout <<"a = "<< a << std::endl;
-    // std::cout <<"b = "<< Fixed( 5.05f ) << " * " << Fixed( 2 ) << " = " << b << std::endl;
-    // std::cout << ++a << std::endl;
-    // std::cout << a << std::endl;
-    // std::cout << a++ << std::endl;
-    // std::cout << a << std::endl;
-    // std::cout << b << std::endl;
-    // std::cout << "max = " << Fixed::max( a, b ) << std::endl;
-    // std::cout << "min = " << Fixed::min( a, b ) << std::endl;
-    // return 0;
-    Fixed a(10.0f);
-    Fixed b(2.0f);
+    Fixed a;
+    Fixed s(Fixed(5.05f) * Fixed(2));
+    Fixed const b(Fixed(5.05f) * Fixed(2));
+    Fixed const  k(Fixed(0) * Fixed(0));
+    std::cout << "a = " << a << std::endl;
+    std::cout << "b = " << b << std::endl;
 
-    std::cout <<"a = "<< a << std::endl;
-    std::cout <<"b = "<< b << std::endl;
     std::cout << std::boolalpha; // Para imprimir true/false en lugar de 1/0
     std::cout << "a > b: " << (a > b) << std::endl;
     std::cout << "a < b: " << (a < b) << std::endl;
     std::cout << "a >= b: " << (a >= b) << std::endl;
     std::cout << "a <= b: " << (a <= b) << std::endl;
     std::cout << "a == b: " << (a == b) << std::endl;
+    std::cout << "a == a: " << (a == a) << std::endl;
     std::cout << "a != b: " << (a != b) << std::endl << std::endl;
 
     Fixed sum = a + b;
     Fixed diff = a - b;
     Fixed prod = a * b;
-    Fixed div = a / b;
-    std::cout <<"a = "<< a << std::endl;
-    std::cout <<"b = "<< b << std::endl;
+    Fixed div = a/ b;
+    //Fixed div0 = s/k;
     std::cout << "a + b = " << sum << std::endl;
     std::cout << "a - b = " << diff << std::endl;
     std::cout << "a * b = " << prod << std::endl;
     std::cout << "a / b = " << div << std::endl << std::endl;
+    // std::cout << "b / k = " << div0 << std::endl << std::endl;
 
     // Pruebas de operadores de incremento y decremento
     std::cout << "a original: " << a << std::endl;
@@ -53,6 +44,7 @@ int main( void )
 
     std::cout << "Max of a and b: " << Fixed::max(a, b) << std::endl;
     std::cout << "Min of a and b: " << Fixed::min(a, b) << std::endl;
+    
     return 0;
 }
 
