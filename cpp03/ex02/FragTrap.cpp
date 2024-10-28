@@ -2,19 +2,22 @@
 
 FragTrap::FragTrap() :ClapTrap()
 {
-        std::cout << "constructor defaut FragTrap  called" << std::endl;
+    std::cout << "Constructor defaut FragTrap  called" << std::endl;
+    sethitPoints(100);
+    setEnergyPoints(100);
+    setAttackDamage(30);
 }
 
 FragTrap::FragTrap(const std::string name) :ClapTrap(name)
 {
-    std::cout << "constructor  FragTrap name called" << std::endl;
-    setHealth(100);
+    std::cout << "Constructor  FragTrap" << name << "called" << std::endl;
+    sethitPoints(100);
     setEnergyPoints(100);
     setAttackDamage(30);
 }
 FragTrap:: ~FragTrap()
 {
-    std::cout << "destructor defaut FragTrap name called" << std::endl;
+    std::cout << "Destructor defaut FragTrap name called" << std::endl;
 }
 void FragTrap::highFivesGuys()
 {
@@ -29,6 +32,6 @@ void FragTrap::attack(const std::string& target)
         setEnergyPoints(getenergyPoints()-1);
     }
     else
-        std::cout << "FragTrap don´t have enought energy to attack" << std::endl;
+        std::cout << "FragTrap doesn´t have enough energy to attack" << std::endl;
     
 }

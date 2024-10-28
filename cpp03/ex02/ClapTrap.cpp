@@ -3,24 +3,25 @@
 ClapTrap::ClapTrap()
 
 {
-    std::cout << "constructor default called" << std::endl;
-    health = 10;
+    std::cout << "Constructor default called" << std::endl;
+    name = "Unnamed";
+    hitPoints = 10;
     energyPoints = 10;
     attackDamage = 0;
 }
 
 ClapTrap::ClapTrap(const std::string& Name)
 {
-    std::cout << "constructor ClapTrap name called" << std::endl;
     name = Name;
-    health = 10;
+    hitPoints = 10;
     energyPoints = 10;
     attackDamage = 0;
+    std::cout << "Constructor ClapTrap" <<  name << "called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "destructor ClapTrap default called" << std::endl;
+    std::cout << "Destructor called for " << name << std::endl;
 }
 
 //ClapTrap <name> attacks <target>, causing <damage> points of damage!
@@ -32,26 +33,31 @@ void ClapTrap::attack(const std::string& target)
         energyPoints -= 1;
     }
     else
-        std::cout << "ClapTrap don´t have enought energy to attack" << std::endl;
+        std::cout << "ClapTrap doesn´t have enough energy to attack" << std::endl;
     
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
     std::cout << "ClapTrap " << name << " take " << amount << " points of damage!" << std::endl;
-    health -= amount;
+    if (hitPoints <= amount) 
+        hitPoints = 0;
+   else
+        hitPoints -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
     if (energyPoints > 0)
     {
-        std::cout << "ClapTrap " << name << " lose 1 point of energy to  earn " << amount << " points of health!" << std::endl;
-        health += amount;
+        std::cout << "ClapTrap " << name << " loses 1 point of energy to  earn " << amount << " points of hitPoints!" << std::endl;
+        hitPoints += amount;
         energyPoints -= 1;
+        std::cout << "ClapTrap " << name << " now has " << hitPoints << " hit points and " << energyPoints << " energy points left." << std::endl;
+
     }
     else
-        std::cout << "ClapTrap don´t have enought energy to repair itself" << std::endl;
+        std::cout << "ClapTrap doesn´t have enough energy to repair itself" << std::endl;
 }
 
 const std::string ClapTrap::getName()
@@ -64,9 +70,9 @@ int ClapTrap::getAttackDamage()
     return (attackDamage);
 }
 
-int ClapTrap::gethealth()
+int ClapTrap::gethitPoints()
 {
-    return (health);
+    return (hitPoints);
 }
 
 int ClapTrap::getenergyPoints()
@@ -78,9 +84,9 @@ void ClapTrap::setAttackDamage(int value)
     attackDamage = value;
 }
 
-void ClapTrap::setHealth(int value)
+void ClapTrap::sethitPoints(int value)
 {
-    health  = value;
+    hitPoints  = value;
 }
 
 void ClapTrap::setEnergyPoints(int value)

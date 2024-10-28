@@ -2,19 +2,19 @@
 
  ScavTrap::ScavTrap(): ClapTrap()
  {
-    std::cout << "constructor defaut ScavTrap name called" << std::endl;
+    std::cout << "Constructor defaut ScavTrap name called" << std::endl;
  }
 
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name)
 {
-    std::cout << "constructor ScavTrap name called" << std::endl;
-    setHealth (100);
+    std::cout << "Constructor ScavTrap " << name << " called" << std::endl;
+    sethitPoints (100);
     setEnergyPoints(50);
     setAttackDamage(20);
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "destructor  ScavTrapdefault called" << std::endl;
+    std::cout << "Destructor  ScavTrapdefault called" << std::endl;
 }
 
 
@@ -31,6 +31,6 @@ void ScavTrap ::attack(const std::string& target)
         setEnergyPoints(getenergyPoints()-1);
     }
     else
-        std::cout << "ScavTrap don´t have enought energy to attack" << std::endl;
+        std::cout << "ScavTrap doesn´t have enough energy to attack" << std::endl;
     
 }
