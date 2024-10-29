@@ -19,6 +19,19 @@ FragTrap:: ~FragTrap()
 {
     std::cout << "Destructor defaut FragTrap name called" << std::endl;
 }
+
+FragTrap& FragTrap::operator=(const FragTrap& original_FragTrap)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    if(this != &original_FragTrap)
+    {
+         name = original_FragTrap.name;
+        hitPoints = original_FragTrap. hitPoints;
+        energyPoints = original_FragTrap. energyPoints;
+        attackDamage = original_FragTrap.attackDamage;
+    }
+    return(*this);
+}
 void FragTrap::highFivesGuys()
 {
     std::cout << "HIGH FIVES !!" << std::endl;

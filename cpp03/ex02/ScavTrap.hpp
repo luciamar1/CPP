@@ -8,6 +8,8 @@
             ScavTrap(const std::string name);
             ScavTrap();
             ~ScavTrap();
+            ScavTrap& operator=(const ScavTrap& original_ScavTrap);
+
             void attack(const std::string& target);
             void guardGate();
     };
