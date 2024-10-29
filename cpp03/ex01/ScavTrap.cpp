@@ -14,9 +14,21 @@ ScavTrap::ScavTrap(const std::string name) : ClapTrap(name)
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "Destructor  ScavTrapdefault called" << std::endl;
+    std::cout << "Destructor  ScavTrap  default called for "  << name << std::endl;
 }
 
+ScavTrap& ScavTrap::operator=(const ScavTrap& original_ScavTrap)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    if(this != &original_ScavTrap)
+    {
+         name = original_ScavTrap.name;
+        hitPoints = original_ScavTrap. hitPoints;
+        energyPoints = original_ScavTrap. energyPoints;
+        attackDamage = original_ScavTrap.attackDamage;
+    }
+    return(*this);
+}
 
 void ScavTrap::guardGate()
 {
