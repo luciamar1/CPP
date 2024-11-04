@@ -26,3 +26,10 @@ void WrongAnimal::makeSound() const
 {
     return(type);
 }
+
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
+    if (this != &other) {                   // 1. Verificación de autoasignación
+        type = other.type;                  // 4. Copiar el atributo `type`
+    }
+    return *this;
+}     

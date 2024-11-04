@@ -18,5 +18,12 @@ Dog::~Dog()
 void Dog::makeSound() const 
 {
     std::cout << "guau guau i´m a dog or a dogito =)" << std::endl;
-}
+}                  
 
+Dog& Dog::operator=(const Dog& other) {
+    if (this != &other) {                   // 1. Verificación de autoasignación
+        type = other.type;                  // 4. Copiar el atributo `type`
+    }
+    return *this;
+}     
+   

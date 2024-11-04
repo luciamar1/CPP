@@ -21,5 +21,14 @@ Cat::~Cat()
 void Cat::makeSound() const 
 {
     std::cout << "miau miau i´m a cat or a catito =)" << std::endl;
-}
+}                           
+
+Cat& Cat::operator=(const Cat& other) {
+    if (this != &other) {                  // 1. Verificación de autoasignación
+        delete brain;                       // 2. Liberar memoria actual de `brain`
+        brain = new Brain(*other.brain);    // 3. Copia profunda de `Brain`
+        type = other.type;                  // 4. Copiar el atributo `type`
+    }
+    return *this;
+}                             
 
