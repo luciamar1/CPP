@@ -9,7 +9,9 @@ class Brain
     public:
         std::string *brain[100];
         Brain();
+        Brain(std::string AnimalType);
         ~Brain();
 };
 
 #endif
+
