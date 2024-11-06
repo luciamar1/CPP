@@ -5,9 +5,9 @@ WrongCat::WrongCat()
     type = "Wrongcat";
     std::cout << "default constructor Wrongcat called" << std::endl;
 }
-WrongCat::WrongCat(std::string animalType)
+WrongCat::WrongCat( const WrongCat& other) : WrongAnimal(other)
 {
-    type = animalType;
+    type = other.type;
     std::cout << "constructor type Wrongcat called" << std::endl;
 }
 WrongCat::~WrongCat()
@@ -21,8 +21,8 @@ void WrongCat::makeSound() const
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& other) {
-    if (this != &other) {                   // 1. Verificación de autoasignación
-        type = other.type;                  // 4. Copiar el atributo `type`
+    if (this != &other) {                   
+        this->type = other.type;                  
     }
     return *this;
 }     

@@ -5,9 +5,8 @@ Dog::Dog()
     type = "dog";
     std::cout << "default constructor dog called" << std::endl;
 }
-Dog::Dog(std::string AnimalType)
+Dog::Dog(const Dog& other) : Animal(other)
 {
-    type = AnimalType;
     std::cout << "constructor type dog called" << std::endl;
 }
 Dog::~Dog()
@@ -21,8 +20,8 @@ void Dog::makeSound() const
 }                  
 
 Dog& Dog::operator=(const Dog& other) {
-    if (this != &other) {                   // 1. Verificación de autoasignación
-        type = other.type;                  // 4. Copiar el atributo `type`
+    if (this != &other) {                   
+        this->type = other.type;                  
     }
     return *this;
 }     

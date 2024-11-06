@@ -11,10 +11,10 @@ Animal::~Animal()
     std::cout << "default destructor animal called" << std::endl;
 }
 
-Animal::Animal(std::string AnimalType)
+Animal::Animal(const Animal& other)
 {
     std::cout << " constructor animal called" << std::endl;
-    type = AnimalType;
+    type = other.type;
 }
 
 void Animal::makeSound() const

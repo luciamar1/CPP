@@ -11,10 +11,10 @@ WrongAnimal::~WrongAnimal()
     std::cout << "default destructor Wronganimal called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::string WrongAnimalType)
+WrongAnimal::WrongAnimal(const WrongAnimal& other)
 {
     std::cout << " constructor Wronganimal called" << std::endl;
-    type = WrongAnimalType;
+    this->type = other.type;
 }
 
 void WrongAnimal::makeSound() const
@@ -28,8 +28,8 @@ void WrongAnimal::makeSound() const
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
-    if (this != &other) {                   // 1. Verificación de autoasignación
-        type = other.type;                  // 4. Copiar el atributo `type`
+    if (this != &other) {                   
+        type = other.type;                  
     }
     return *this;
 }     
