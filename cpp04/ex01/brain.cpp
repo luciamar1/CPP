@@ -12,3 +12,14 @@ Brain::~Brain()
 
 
 
+void Brain::setIdea(int index,  std::string& idea) 
+{
+    if(index <= 100)
+        this->brain[index] = idea;
+}
+
+std::string Brain::getIdea(int index) const
+{
+    if (index <= 100)
+        return(brain[index]);
+}

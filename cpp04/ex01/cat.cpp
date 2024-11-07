@@ -6,16 +6,15 @@ Cat::Cat()
     type = "cat";
     std::cout << "default constructor cat called" << std::endl;
 }
-Cat::Cat(std::string animalType)
+Cat::Cat(const Cat& other) : Animal(other)
 {
     brain = new Brain();
-    type = animalType;
     std::cout << "constructor type cat called" << std::endl;
 }
 Cat::~Cat()
 {
-    std::cout << "default destructor cat called" << std::endl;
     delete brain;
+    std::cout << "default destructor cat called" << std::endl;
 }
 
 void Cat::makeSound() const 
@@ -23,12 +22,11 @@ void Cat::makeSound() const
     std::cout << "miau miau i´m a cat or a catito =)" << std::endl;
 }                           
 
-Cat& Cat::operator=(const Cat& other) 
-{
-    if (this != &other) {                  
-        delete brain;                     
-        brain = new Brain(*other.brain);  
-        type = other.type;                
+Cat& Cat::operator=(const Cat& other) {
+    if (this != &other) {            
+        delete brain;
+        brain = new Brain(*other.brain);      
+        this->type = other.type;                  
     }
     return *this;
 }                             

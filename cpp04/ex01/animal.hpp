@@ -10,10 +10,11 @@ class Animal
 protected:
     std::string type;
 public:
-    Animal(std::string AnimalType);
+    Animal(const Animal& other);
     Animal();
     virtual~Animal();
-  Animal& operator=(const Animal& original_Animal);
+    Animal& operator=(const Animal& original_Animal);
+
 
     std::string getType() const;
     virtual  void makeSound() const;

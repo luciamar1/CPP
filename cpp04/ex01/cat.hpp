@@ -6,15 +6,14 @@
 class Cat: public Animal
 {
     private:
-        Brain   *brain;
+    Brain   *brain;
     public:
-        Cat();
-        Cat(std::string AnimalType);
-        ~Cat();
-        Cat& operator=(const Cat& original_Cat);
+    Cat(const Cat& other);
+    Cat();
+    ~Cat();
+    Cat& operator=(const Cat& original_Cat);
 
-        void makeSound() const;
+    void makeSound() const;
 };
 
 #endif
-
