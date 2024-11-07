@@ -31,3 +31,12 @@ Cat& Cat::operator=(const Cat& other) {
     return *this;
 }                             
 
+
+
+
+Brain* Cat::getBrain() const 
+{
+    return brain;
+}
+
+

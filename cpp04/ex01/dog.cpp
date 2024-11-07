@@ -8,6 +8,7 @@ Dog::Dog()
 }
 Dog::Dog(const Dog& other) : Animal(other)
 {
+    brain = new Brain();
     std::cout << "constructor type dog called" << std::endl;
 }
 Dog::~Dog()
@@ -30,19 +31,9 @@ Dog& Dog::operator=(const Dog& other) {
     return *this;
 }     
    
-
-void Dog::setIdea(int index,  std::string& idea) 
+Brain* Dog::getBrain() const 
 {
-    if (brain) {
-        brain->setIdea(index, idea);
-    }
-}
-
-std::string Dog::getBrain(int index) const 
-{
-    if (brain) {
-        return brain->getIdea(index);
-    }
-    return "";
+    
+    return brain;
 }
 

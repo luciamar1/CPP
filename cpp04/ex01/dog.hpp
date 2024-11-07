@@ -7,16 +7,16 @@
 class Dog: public Animal
 {
     private:
-    Brain   *brain;
-    public:
-    Dog(const Dog& other);
-    Dog();
-    ~Dog();
-    Dog& operator=(const Dog& original_Dog);
+        Brain   *brain;
 
-    std::string getIdea(int index) const;
-    void setIdea(int index,  std::string& idea) ;
-    void makeSound() const ;
+    public:
+        Dog();
+        Dog(const Dog& other);
+        ~Dog();
+        Dog& operator=(const Dog& original_Dog);
+
+        Brain* getBrain() const;
+        void makeSound() const ;
 };
 
 #endif

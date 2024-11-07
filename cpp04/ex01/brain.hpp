@@ -8,12 +8,14 @@ class Brain
 {
     public:
         std::string brain[100];
+
         Brain();
-        Brain(const Animal& other);
+        Brain(const Brain& other);
+        Brain& operator=(const Brain& other);
         ~Brain();
 
-        void setBrain(int index,  std::string& idea) ;
-        std::string getBrain(int index) const;
+        void setIdea(int index,  const  std::string& idea) ;
+        std::string getIdea(int index) const;
 };
 
 #endif
