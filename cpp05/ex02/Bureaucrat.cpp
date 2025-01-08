@@ -1,7 +1,5 @@
 #include  "Bureaucrat.hpp"
-Bureaucrat::Bureaucrat()
-{
-}
+Bureaucrat::Bureaucrat() : name("Default"), range(150) {}
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), range(other.range)
 {}

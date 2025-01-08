@@ -35,6 +35,9 @@ void    ShrubberyCreationForm::executeAction(const Bureaucrat &_bur) const
         nameFile = file + "_shrubbery";
         std::cout << _bur.getName() << " execute " << this->getName ()<<std::endl;
         std::ofstream    valueFile( nameFile.c_str());
+        if (!valueFile) 
+            throw std::ios_base::failure("Error opening file for writing.");
+
         
         valueFile << "       ccee88oo" << std::endl;
         valueFile << " C8O8O8Q8PoOb o8oo" << std::endl;

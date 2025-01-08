@@ -30,11 +30,7 @@ AForm::~AForm()
 {
 }
 
-AForm::AForm(const AForm& other)
-    : name(other.name),
-      sign(other.getSign()),
-      requiredRangeSign(other.getRangeSign()),
-      requiredRangeExecute(other.getRangeExecute()) {}
+
 
 AForm& AForm::operator=(const AForm& other) {
     if (this != &other) {
