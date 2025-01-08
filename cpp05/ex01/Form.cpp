@@ -2,6 +2,7 @@
 #include  "Bureaucrat.hpp"
 
 
+Form::Form() : name("Default"), sign(false), requiredRangeSign(150), requiredRangeExecute(150) {}
 
 Form::Form(const std::string   _name, int  _rsign, int _rexecute): name(_name),   requiredRangeSign (_rsign),   requiredRangeExecute (_rexecute)
 {
@@ -19,16 +20,32 @@ Form::Form(const std::string   _name, int  _rsign, int _rexecute): name(_name), 
   
 }
 
+Form::Form(const Form& other)
+    : name(other.name),
+      sign(other.getSign()),
+      requiredRangeSign(other.getRangeSign()),
+      requiredRangeExecute(other.getRangeExecute()) {}
+
+
+Form& Form::operator=(const Form& other) {
+    if (this != &other) {
+        // `name`, `requiredGradeToSign` y `requiredGradeToExecute` son constantes y no se pueden reasignar.
+        this->sign = other.sign;
+    }
+    return *this;
+}
+
+
 Form::~Form()
 {
 }
 
-int Form::getRangeSign()
+int Form::getRangeSign() const
 {
     return(requiredRangeSign);
 }
 
-int Form::getRangeExecute()
+int Form::getRangeExecute() const
 {
     return(requiredRangeExecute);
 }
@@ -38,7 +55,7 @@ int Form::getRangeExecute()
     return(name);
  }
  
- bool   Form::getSign()
+ bool   Form::getSign() const
  {
     return(sign);
  }

@@ -16,12 +16,16 @@ private:
     const int requiredRangeExecute;
 public:
     Form();
-    Form(const std::string   _name, int  _rgsign, int _rexecute);
+    Form(const Form& other);
+    Form& operator=(const Form& other);
     ~Form();
-    int getRangeSign();
-    int getRangeExecute();
+
+    Form(const std::string   _name, int  _rgsign, int _rexecute);
+    
+    int getRangeSign()const;
+    int getRangeExecute()const;
     std::string  getName();
-    bool  getSign();
+    bool  getSign() const;
 
     void    beSigned(Bureaucrat &_bur);
     class GradeTooHighException: public std::exception

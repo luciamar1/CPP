@@ -3,6 +3,9 @@ Bureaucrat::Bureaucrat()
 {
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), range(other.range)
+{}
+
 Bureaucrat::Bureaucrat(const std::string   _name, int _grade): name(_name)
 {
     if(_grade < 1)
@@ -14,6 +17,15 @@ Bureaucrat::Bureaucrat(const std::string   _name, int _grade): name(_name)
 
 Bureaucrat::~Bureaucrat()
 {
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) 
+{
+    if (this != &other) 
+    {
+        this->range = other.range;
+    }
+    return *this;
 }
 
 int Bureaucrat::getGrade()

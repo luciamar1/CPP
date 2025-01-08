@@ -10,11 +10,17 @@ private:
     int range;
 public:
     Bureaucrat();
-    Bureaucrat(const std::string   _name, int _grade);
+    Bureaucrat(const Bureaucrat& other);
+    Bureaucrat& operator=(const Bureaucrat& other);
     ~Bureaucrat();
+
+    Bureaucrat(const std::string   _name, int _grade);
+    
     int getGrade();
     void setGrade(int grade);
+    
     std::string  getName();
+    
     void    incrementGrade();
     void    decrementGrade();
     class GradeTooHighException: public std::exception
