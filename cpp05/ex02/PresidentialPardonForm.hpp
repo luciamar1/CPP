@@ -14,8 +14,11 @@ private:
     std::string file;
 public:
     PresidentialPardonForm();
-    PresidentialPardonForm(const std::string   _file);
+    PresidentialPardonForm(const std::string& _file);
+    PresidentialPardonForm(const PresidentialPardonForm& other);
+    PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
     ~PresidentialPardonForm();
+    
     void executeAction(const Bureaucrat &_bur) const;
 };
 

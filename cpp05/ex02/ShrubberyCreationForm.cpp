@@ -1,11 +1,23 @@
 #include "ShrubberyCreationForm.hpp"
 #include <string>
 ShrubberyCreationForm::ShrubberyCreationForm()
-: AForm("ShrubberyCreationForm", 145, 137 )
+: AForm("ShrubberyCreationForm", 145, 137 ), file("")
 {}
 ShrubberyCreationForm::ShrubberyCreationForm(std::string _file)
 : AForm("ShrubberyCreationForm", 145, 137 ), file(_file)
 {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+    : AForm(other), file(other.file) {}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
+    if (this != &other) {
+        AForm::operator=(other); // Copiar los miembros de AForm
+        file = other.file;
+    }
+    return *this;
+}
+
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 { }

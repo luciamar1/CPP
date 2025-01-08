@@ -15,8 +15,11 @@ private:
     int range;
 public:
     Bureaucrat();
-    Bureaucrat(const std::string   _name, int _grade);
+    Bureaucrat(const Bureaucrat& other);
+    Bureaucrat& operator=(const Bureaucrat& other);
     ~Bureaucrat();
+
+    Bureaucrat(const std::string   _name, int _grade);
 
     int getGrade() const;
     void setGrade(int grade);

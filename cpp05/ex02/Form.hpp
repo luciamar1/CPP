@@ -18,10 +18,13 @@ private:
     const int requiredRangeExecute;
 public:
     AForm();
+    AForm(const AForm& other);
     AForm(const std::string   _name, int  _rgsign, int _rexecute);
+    AForm& operator=(const AForm& other);
     virtual ~AForm();
+
     int getRangeSign() const;
-   int getRangeExecute() const;
+    int getRangeExecute() const;
     std::string  getName() const;
     bool  getSign() const;
 

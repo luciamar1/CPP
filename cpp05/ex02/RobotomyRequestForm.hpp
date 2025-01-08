@@ -15,7 +15,10 @@ private:
 public:
     RobotomyRequestForm();
     RobotomyRequestForm(const std::string   _file);
+   RobotomyRequestForm(const RobotomyRequestForm& other);
+    RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
     ~RobotomyRequestForm();
+    
     void executeAction(const Bureaucrat &_bur) const;
 };
 

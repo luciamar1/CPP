@@ -1,14 +1,25 @@
 #include "RobotomyRequestForm.hpp"
 #include <string>
 RobotomyRequestForm::RobotomyRequestForm()
-: AForm("RobotomyRequestForm", 72, 45 )
+: AForm("RobotomyRequestForm", 72, 45 ), file("")
 {}
 RobotomyRequestForm::RobotomyRequestForm(std::string _file)
 : AForm("RobotomyRequestForm",  72, 45), file(_file)
 {}
 
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
+    : AForm(other), file(other.file) {}
+
 RobotomyRequestForm::~RobotomyRequestForm()
 { }
+
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
+    if (this != &other) {
+        AForm::operator=(other); // Copiar los miembros de AForm
+        file = other.file;
+    }
+    return *this;
+}
 
 void    RobotomyRequestForm::executeAction(const Bureaucrat &_bur) const
 {
