@@ -53,6 +53,9 @@ int main() {
     std::cout << "Array incrementado (doubleArray): ";
     iter(doubleArray, doubleArraySize, printElement<double>);
     std::cout << std::endl;
+    
 
     return 0;
 }
+
+
