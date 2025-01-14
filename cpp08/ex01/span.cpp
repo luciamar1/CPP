@@ -1,5 +1,26 @@
 #include "span.hpp"
 
+Span::Span()
+{
+    maxSize = 0;
+}
+Span::Span(const Span& other) 
+{
+    maxSize = other.maxSize;
+    container = other.container;
+}
+
+Span& Span::operator=(const Span& other) 
+{
+    if (this != &other) 
+    {
+        this->maxSize = other.maxSize;
+        container = other.container;
+    }
+    return *this;
+}
+
+
 Span::Span(unsigned int N)
 {
     maxSize = N;
@@ -33,29 +54,28 @@ void Span::addNumber(int value)
     container.push_back(value);
     return;
 }
+ template <typename Iterator>
+ void    Span::addNumbers(Iterator begin, Iterator end) 
+    {
+        // Calcular cuántos elementos se agregarían
+      size_t distance = std::distance(begin, end);
+        if (container.size() + distance > maxSize) {
+            throw std::overflow_error("Maximum size reached after adding range");
+        }
+        container.insert(container.end(), begin, end);
+    }
 
   
 
 unsigned int Span::longestSpan()
 {
-    int longest = container[0];
-    unsigned int size  = container.size();
+   if (container.size() <= 1)
+        throw emptyException();
+   std::vector<int>::iterator minIt = std::min_element(container.begin(), container.end());
 
-    if (!size || size == 1)
-        throw(emptyException());
+    std::vector<int>::iterator maxIt = std::max_element(container.begin(), container.end());
 
-    for(unsigned int counter = 0; counter <=  size; counter ++)
-    {
-        if (container[counter] >= longest )
-            longest = container[counter];
-    }
-     int shortest = container[0];
-    for(unsigned int counter = 0; counter <  size; counter ++)
-    {
-        if (container[counter] <= shortest )
-            shortest = container[counter];
-    }
-    return(longest  - shortest);
+    return static_cast<unsigned int>(*maxIt - *minIt);
 }
 
 int restOrder(int verif, int other)
@@ -74,8 +94,8 @@ unsigned int Span::shortestSpan()
         throw(emptyException());
 
     std::sort(container.begin(), container.end());
-    int shortestDif = std::numeric_limits<int>::max();
-    int dif;
+    unsigned int shortestDif = std::numeric_limits<unsigned int>::max();
+    unsigned int dif;
     for (unsigned int counter = 1; counter < size ; counter ++)
     {
         dif = container[counter] - container[counter - 1];
