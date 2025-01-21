@@ -29,23 +29,6 @@ Span::Span(unsigned int N)
 Span::~Span()
 {}
 
-class   fullException : public std::exception
-{
-    public :
-        const char * what() const  throw()
-        {
-            return("Full span  ");
-        }
-};
-
-class   emptyException : public std::exception
-{
-    public :
-        const char * what() const  throw()
-        {
-            return("No enough numbers in span ");
-        }
-};
 
 void Span::addNumber(int value)
 {
@@ -54,22 +37,13 @@ void Span::addNumber(int value)
     container.push_back(value);
     return;
 }
- template <typename Iterator>
- void    Span::addNumbers(Iterator begin, Iterator end) 
-    {
-        // Calcular cuántos elementos se agregarían
-      size_t distance = std::distance(begin, end);
-        if (container.size() + distance > maxSize) {
-            throw std::overflow_error("Maximum size reached after adding range");
-        }
-        container.insert(container.end(), begin, end);
-    }
+
 
   
 
 unsigned int Span::longestSpan()
 {
-   if (container.size() <= 1)
+   if (!container.size() || container.size() <= 1)
         throw emptyException();
    std::vector<int>::iterator minIt = std::min_element(container.begin(), container.end());
 
@@ -103,4 +77,9 @@ unsigned int Span::shortestSpan()
             shortestDif = dif;
     }
     return(shortestDif);
+}
+
+const std::vector<int>& Span::getContainer() const 
+{
+    return container;
 }
