@@ -3,7 +3,7 @@ NAME       := easy_find
 
 # Archivos fuente
 SRC_DIR    := .
-SRC_NAME   := main.cpp span.cpp
+SRC_NAME   := main.cpp 
 
 # Librerias
 HEAD_DIR   := .
