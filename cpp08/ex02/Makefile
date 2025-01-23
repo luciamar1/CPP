@@ -7,7 +7,7 @@ SRC_NAME   := main.cpp
 
 # Librerias
 HEAD_DIR   := .
-HEAD_NAME  :=  MutantStack.h
+HEAD_NAME  :=  MutantStack.hpp
 
 # Directorio de los archivos objeto
 OBJ_DIR    := .

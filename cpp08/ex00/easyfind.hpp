@@ -9,6 +9,23 @@
 class   notFound : public std::exception
 {
     public :
+ 
+        notFound() {}
+
+        notFound(const notFound& other) 
+        {
+            (void)other; 
+        }
+
+        notFound& operator=(const notFound& other) 
+        {
+            (void)other;
+            return *this;
+        }
+
+        ~notFound() throw() {}
+
+        
         const char * what() const  throw()
         {
             return("Element not found!");

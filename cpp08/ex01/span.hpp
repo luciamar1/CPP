@@ -37,6 +37,21 @@ public:
 
 class fullException : public std::exception {
 public:
+     fullException() {}
+
+        fullException(const fullException& other) 
+        {
+            (void)other; 
+        }
+
+        fullException& operator=(const fullException& other) 
+        {
+            (void)other;
+            return *this;
+        }
+
+        ~fullException() throw() {}
+
     const char* what() const throw() {
         return "Full span";
     }
@@ -44,6 +59,20 @@ public:
 
 class emptyException : public std::exception {
 public:
+     emptyException() {}
+
+        emptyException(const emptyException& other) 
+        {
+            (void)other; 
+        }
+
+        emptyException& operator=(const emptyException& other) 
+        {
+            (void)other;
+            return *this;
+        }
+
+        ~emptyException() throw() {}
     const char* what() const throw() {
         return "Not enough elements in span";
     }
