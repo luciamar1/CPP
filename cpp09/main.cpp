@@ -3,11 +3,23 @@
 #include <fstream>
 #include <sstream>
 
+
+std::string getCurrentDate() {
+    time_t now = time(0);
+    struct tm tstruct;
+    char buf[11];  // "YYYY-MM-DD" + null terminator
+    tstruct = *localtime(&now);
+    strftime(buf, sizeof(buf), "%Y-%m-%d", &tstruct);
+    return std::string(buf);
+}
+
 bool isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-bool isValidDate(const std::string& date) {
+bool isValidDate(const std::string& date) 
+{
+
     // 1. Verificar longitud correcta (YYYY-MM-DD -> 10 caracteres)
     if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
         return false;
@@ -21,7 +33,13 @@ bool isValidDate(const std::string& date) {
     if (!(iss >> year >> dash1 >> month >> dash2 >> day) || dash1 != '-' || dash2 != '-') {
         return false;
     }
+    std::string currentDate = getCurrentDate();  // Obtener la fecha actual
 
+    if (date > currentDate) {  // Comparación de strings funciona con formato YYYY-MM-DD
+        std::cerr << "Error: date is in the future => " << date << std::endl;
+        return false;
+    }
+    
     // 3. Validar rangos de año, mes y día
     if (year < 2009 || month < 01 || month > 12 || day < 01) {  // Bitcoin empezó en 2009
         return false;
@@ -55,7 +73,6 @@ int main(int argc, char* argv[]) {
         std::cerr << "Error: could not open file." << std::endl;
         return 1;
     }
-
     try {
         BitcoinExchange exchange("data.csv"); // Replace with the actual DB filename
 
@@ -66,6 +83,7 @@ int main(int argc, char* argv[]) {
         }
 
         std::string line;
+        std::getline(inputFile, line);  
         while (std::getline(inputFile, line)) 
         {
             std::istringstream ss(line);
@@ -89,7 +107,9 @@ int main(int argc, char* argv[]) {
                 float value = std::atof(valueStr.c_str());
                 float rate = exchange.getExchangeRate(date);
                 std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
-            } else {
+            } 
+            else
+             {
                 std::cerr << "Error: bad input => " << line << std::endl;
             }
         }
