@@ -3,14 +3,47 @@
 #include <fstream>
 #include <sstream>
 
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
 bool isValidDate(const std::string& date) {
-    // Validate date format (YYYY-MM-DD)...
-    return true; // Placeholder
+    // 1. Verificar longitud correcta (YYYY-MM-DD -> 10 caracteres)
+    if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
+        return false;
+    }
+
+    // 2. Extraer partes de la fecha
+    int year, month, day;
+    std::istringstream iss(date);
+    char dash1, dash2;
+
+    if (!(iss >> year >> dash1 >> month >> dash2 >> day) || dash1 != '-' || dash2 != '-') {
+        return false;
+    }
+
+    // 3. Validar rangos de año, mes y día
+    if (year < 2009 || month < 01 || month > 12 || day < 01) {  // Bitcoin empezó en 2009
+        return false;
+    }
+
+    // 4. Validar días según el mes
+    int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    if (month == 02 && isLeapYear(year)) {  
+        daysInMonth[1] = 29;  // Ajustar para años bisiestos
+    }
+
+    if (day > daysInMonth[month - 1]) {
+        return false;
+    }
+
+    return true;  // La fecha es válida
 }
 
 bool isValidValue(const std::string& valueStr) {
     try {
-        float value = std::stof(valueStr);
+        float value = std::atof(valueStr.c_str());
         return value >= 0.0f && value <= 1000.0f;
     } catch (...) {
         return false;
@@ -33,11 +66,13 @@ int main(int argc, char* argv[]) {
         }
 
         std::string line;
-        while (std::getline(inputFile, line)) {
+        while (std::getline(inputFile, line)) 
+        {
             std::istringstream ss(line);
             std::string date, valueStr;
 
-            if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
+            if (std::getline(ss, date, '|') && std::getline(ss, valueStr))
+            {
                 date.erase(date.find_last_not_of(" \n\r\t") + 1); // Trim trailing whitespace
                 valueStr.erase(0, valueStr.find_first_not_of(" \n\r\t")); // Trim leading whitespace
 
@@ -51,7 +86,7 @@ int main(int argc, char* argv[]) {
                     continue;
                 }
 
-                float value = std::stof(valueStr);
+                float value = std::atof(valueStr.c_str());
                 float rate = exchange.getExchangeRate(date);
                 std::cout << date << " => " << value << " = " << (value * rate) << std::endl;
             } else {

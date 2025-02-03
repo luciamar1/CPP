@@ -24,7 +24,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
 BitcoinExchange::~BitcoinExchange() {}
 // Cargar la base de datos desde un archivo CSV
 void BitcoinExchange::loadDatabase(const std::string& dbFile) {
-    std::ifstream file(dbFile);
+    std::ifstream file(dbFile.c_str());    
     if (!file.is_open())
         throw std::runtime_error("Error: could not open file.");
 
@@ -42,8 +42,9 @@ void BitcoinExchange::loadDatabase(const std::string& dbFile) {
 
 // Obtener la tasa de cambio más cercana a la fecha proporcionada
 float BitcoinExchange::getExchangeRate(const std::string& date) const {
-    auto it = exchangeRates.lower_bound(date);
-    if (it == exchangeRates.end() || it->first > date) {
+std::map<std::string, float>::const_iterator it = exchangeRates.lower_bound(date);
+if (it == exchangeRates.end() || it->first > date) 
+{
         if (it == exchangeRates.begin())
             throw std::runtime_error("Error: date not found.");
         --it;
