@@ -16,7 +16,7 @@ public:
     ~RPN();
     
     // Método para evaluar una expresión en notación polaca inversa
-    int evaluate(const std::string& expression);
+    void evaluate(const std::string& expression);
 };
 
 #endif

@@ -7,11 +7,11 @@ int main(int argc, char* argv[]) {
     }
 
     RPN calculator;
-    int result = calculator.evaluate(argv[1]);
+    calculator.evaluate(argv[1]);
 
-    if (result != -1) {
-        std::cout << result << std::endl;
-    }
+    // if (result != -1) {
+    //     std::cout << result << std::endl;
+    // }
 
     return 0;
 }

@@ -18,7 +18,7 @@ RPN::~RPN() {}
 
 
 // Método para evaluar la expresión RPN
-int RPN::evaluate(const std::string& expression) {
+void RPN::evaluate(const std::string& expression) {
     std::istringstream iss(expression);
     std::string token;
 
@@ -33,7 +33,7 @@ int RPN::evaluate(const std::string& expression) {
             if (_stack.size() < 2) 
             {
                 std::cerr << "Error: Not enough operands.\n";
-                return -1;
+                return ;
             }
             int b = _stack.top(); 
             _stack.pop();
@@ -50,7 +50,7 @@ int RPN::evaluate(const std::string& expression) {
             {
                 if (b == 0) {
                     std::cerr << "Error: Division by zero.\n";
-                    return -1;
+                    return ;
                 }
                 _stack.push(a / b);
             }
@@ -58,14 +58,18 @@ int RPN::evaluate(const std::string& expression) {
         else 
         {
             std::cerr << "Error: Invalid token '" << token << "'.\n";
-            return -1;
+            return ;
         }
+      
     }
 
     if (_stack.size() != 1) {
-        std::cerr << "Error: Malformed expression.\n";
-        return -1;
+        std::cerr << "Error: The expression is incorrect. Check the number of operands and operators.\n";
+        return ;
     }
 
-    return _stack.top();
+ 
+    int result = _stack.top();
+    std::cout << result << std::endl;
+    return ;
 }
