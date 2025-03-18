@@ -1,0 +1,4 @@
+Before: 500 1000 800 200 
+After: 200 500 800 1000 
+Time to process a range of 4 elements with std::vector : 7.00000 us
+Time to process a range of 4 elements with std::deque : 12.00000 us
